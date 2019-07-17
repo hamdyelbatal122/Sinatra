@@ -15,7 +15,6 @@ Features:
 * Hit counts
 * Open source
 
-[![Go](http://img.svbtle.com/inline_maccman_24199375604490_raw.png)](https://github.com/maccman/go)
 
 ## Usage
 

@@ -1,4 +1,4 @@
-require 'sinatra'
+require 'sinatr'
 require 'sequel'
 require 'sinatra/sequel'
 require 'json'

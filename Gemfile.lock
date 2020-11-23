@@ -25,10 +25,3 @@ GEM
 PLATFORMS
   ruby
 
-DEPENDENCIES
-  erubis
-  sequel
-  sinatra
-  sinatra-sequel
-  sqlite3
-  thin

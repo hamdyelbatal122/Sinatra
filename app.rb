@@ -1,7 +1,4 @@
 require 'sinatra'
-require 'sequel'
-require 'sinatra/sequel'
-require 'json'
 
 # Models & migrations
 

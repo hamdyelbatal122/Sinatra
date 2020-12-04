@@ -11,6 +11,8 @@ migration 'create links' do
     String :name, :unique => true, :null => false
     String :url, :unique => false, :null => false
     Integer :hits, :default => 0
+    DateTime :created_at
+    index :name
 
   end
 end

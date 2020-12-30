@@ -31,9 +31,7 @@ class Link < Sequel::Model
 end
 
 
-configure do
-  set :erb, :escape_html => true
-end
+
 
 # Actions
 

@@ -36,7 +36,6 @@ configure do
 end
 
 # Actions
-
 get '/' do
   @links = Link.order(:hits.desc).all
   erb :index

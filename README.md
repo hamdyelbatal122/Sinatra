@@ -26,6 +26,7 @@ Features:
 The idea is that users can type `go/mail` in their browser, and be forwarded
 to the relevant destination. You can make 'go' resolve in one of two ways.
 
+
 1. Edit everyone's `/etc/hosts` file
 
 2. Set the 'Search Domains' part of Network Settings (preferred method). You can do this

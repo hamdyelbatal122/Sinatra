@@ -36,3 +36,4 @@ to the relevant destination. You can make 'go' resolve in one of two ways.
    Then, 'go' would always resolve to whatever server the CNAME points to.
    
    
+   

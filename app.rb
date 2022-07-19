@@ -223,7 +223,6 @@ __END__
   </form>
 
   <hr />
-
   <ul>
     <% @links.each do |link| %>
       <li>

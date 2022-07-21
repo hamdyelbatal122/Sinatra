@@ -6,7 +6,6 @@ Most companies soon start to build up a fair number of internal URLs, and it can
 
 Go is a simple solution to this problem. Once installed you could point `http://go/wiki`, for example, to your company's internal wiki.
 
-
 Features:
 
 * Shortens URLs

@@ -14,7 +14,7 @@ Features:
 * Hit counts
 * Open source
 
-## Usage
+## Usage. 
     bundle install
     ruby app.rb
 

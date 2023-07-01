@@ -18,7 +18,7 @@ Features:
     bundle install
     ruby app.rb
 
-## Network
+## Network 
 
 The idea is that users can type `go/mail` in their browser, and be forwarded
 to the relevant destination. You can make 'go' resolve in one of two ways.
@@ -29,4 +29,4 @@ to the relevant destination. You can make 'go' resolve in one of two ways.
    at a company wide level, or on individual machines. These domains are
    searched when resolving urls. For example, you could set a 'Search Domain'
    to be `mycompany.local`, and then create the CNAME `go.mycompany.local`.
-   Then, 'go' would always resolve to whatever server the CNAME point . 
+   Then, 'go' would always resolve to whatever server the CNAME point .

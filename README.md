@@ -15,7 +15,7 @@ Features:
 * Open source    
      
 ## Usage.      
-    bundle install
+    bundle install 
     ruby app.rb  
  
 ## Network  

@@ -10,7 +10,7 @@ Features:
 * Shortens URLs.      
 * OpenSearch integration & autocomplete
 * Navigate to 'go' to create/remove shortcuts  
-* Dynamic parameter substitution
+* Dynamic parameter substitution 
 * Hit counts     
 * Open source      
                    

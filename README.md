@@ -13,7 +13,6 @@ Features:
 * Dynamic parameter substitution  
 * Hit counts     
 * Open source  
-
     
 ## Usage.          
     bundle install  

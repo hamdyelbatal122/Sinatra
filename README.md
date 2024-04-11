@@ -12,7 +12,7 @@ Features:
 * Navigate to 'go' to create/remove shortcuts  
 * Dynamic parameter substitution  
 * Hit counts       
-* Open source  
+* Open source    
          
 ## Usage.          
     bundle install  

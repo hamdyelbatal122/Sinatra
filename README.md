@@ -17,7 +17,7 @@ Features:
 ## Usage.           
     bundle install  
     ruby app.rb     
-   
+      
 ## Network  
 
 The idea is that users can type `go/mail` in their browser, and be forwarded

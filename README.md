@@ -11,7 +11,7 @@ Features:
 * OpenSearch integration & autocomplete     
 * Navigate to 'go' to create/remove shortcuts  
 * Dynamic parameter substitution  
-* Hit counts       
+* Hit counts         
 * Open source     
             
 ## Usage.           

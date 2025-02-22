@@ -9,7 +9,7 @@ Go is a simple solution to this problem. Once installed you could point `http://
 Features:                           
 * Shortens URLs.                
 * OpenSearch integration & autocomplete     
-* Navigate to 'go' to create/remove shortcuts   
+* Navigate to 'go' to create/remove shortcuts     
 * Dynamic parameter substitution    
 * Hit counts         
 * Open source         

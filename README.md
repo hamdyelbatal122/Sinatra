@@ -1,7 +1,6 @@
 #Sinatra URL shortener.    
 Go is a super simple Sinatra URL shortener for use behind the firewall.    
 
-
 Most companies soon start to build up a fair number of internal URLs, and it can often be tricky remembering these all. This especially difficult when somebody new joins the company. 
  
 Go is a simple solution to this problem. Once installed you could point `http://go/wiki`, for example, to your company's internal wiki.     

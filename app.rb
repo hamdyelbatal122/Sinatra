@@ -37,7 +37,7 @@ end
 
 # Actions
 get '/' do
-  @links = Link.order(:hits.desc).all
+  @links = Link.order(Sequel.desc(:hits)).all
   erb :index
 end
 
@@ -61,7 +61,8 @@ end
 get '/links/suggest' do
   query = params[:q]
 
-  results = Link.filter(:name.like("#{query}%")).or(:url.like("%#{query}%"))
+  escaped = Sequel.escape_like(query.to_s)
+  results = Link.where(Sequel.like(:name, "#{escaped}%")).or(Sequel.like(:url, "%#{escaped}%"))
   results = results.all.map {|r| r.name }
 
   content_type :json
@@ -75,7 +76,7 @@ get '/links/search' do
   if link
     redirect "/#{link.name}"
   else
-    @links = Link.filter(:name.like("#{query}%"))
+    @links = Link.where(Sequel.like(:name, "#{Sequel.escape_like(query.to_s)}%"))
     erb :index
   end
 end

@@ -1,0 +1,12 @@
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>Go</ShortName>
+  <Description>Search Go</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <OutputEncoding>UTF-8</OutputEncoding>
+  <Url type="application/x-suggestions+json" method="GET" template="http://go/links/suggest">
+    <Param name="q" value="{searchTerms}"/>
+  </Url>
+  <Url type="text/html" method="GET" template="http://go/links/search">
+    <Param name="q" value="{searchTerms}"/>
+  </Url>
+</OpenSearchDescription>

@@ -1,0 +1,35 @@
+<h1>Go URL Shortener</h1>
+
+<% if logged_in? %>
+  <%= erb :'partials/_link_form' %>
+<% end %>
+
+<ul>
+  <% @links.each do |link| %>
+    <li>
+      <span class="name"><a href="/<%= link.name %>"><%= link.name %></a></span>
+      <span class="url" title="<%= link.url %>"><%= link.url %></span>
+      <% if link.category %>
+        <span style="background:#e3f2fd;color:#1976d2;padding:2px 8px;border-radius:8px;font-size:0.95em;margin-left:8px;"> <%= link.category %> </span>
+      <% end %>
+      <% if link.tag_list.any? %>
+        <span style="margin-left:8px;">
+          <% link.tag_list.each do |tag| %>
+            <span style="background:#f1f8e9;color:#388e3c;padding:2px 6px;border-radius:6px;font-size:0.9em;margin-right:2px;">#<%= tag %></span>
+          <% end %>
+        </span>
+      <% end %>
+      <span class="actions">
+        <span class="hits">Hits: <%= link.hits %></span>
+        <span class="qr" title="QR Code">
+          <%= qr_code_svg(request.base_url + '/' + link.name) %>
+        </span>
+        <% if admin? %>
+          <a class="remove" href="/links/<%= link.id %>/remove" onclick="return confirm('Are you sure?');" title="Remove">Remove</a>
+        <% end %>
+      </span>
+    </li>
+  <% end %>
+</ul>
+
+<% if @links.empty? %><p>No links found.</p><% end %>

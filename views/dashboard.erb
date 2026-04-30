@@ -1,0 +1,75 @@
+
+<h1>Admin Dashboard</h1>
+<div style="display: flex; gap: 2em; flex-wrap: wrap;">
+  <div style="flex:1; min-width: 220px;">
+    <h2>Stats</h2>
+    <p><strong>Total links:</strong> <%= @total_links %></p>
+    <p><strong>Total hits:</strong> <%= @total_hits %></p>
+  </div>
+  <div style="flex:2; min-width: 320px;">
+    <h2>Search & Filter</h2>
+    <form method="get" action="/dashboard">
+      <input type="text" name="q" value="<%= @search_query %>" placeholder="Search by name or URL" style="width:60%">
+      <button>Search</button>
+    </form>
+    <% if @filtered_links && !@filtered_links.empty? %>
+      <ul>
+        <% @filtered_links.each do |link| %>
+          <li>
+            <a href="/<%= link.name %>"><%= link.name %></a> - <%= link.url %> (<%= link.hits %> hits)
+          </li>
+        <% end %>
+      </ul>
+    <% elsif @search_query && @search_query != '' %>
+      <p>No results found.</p>
+    <% end %>
+  </div>
+</div>
+
+<div style="margin-top:2em;">
+  <h2>Top 10 Links</h2>
+  <ul>
+    <% @top_links.each do |link| %>
+      <li>
+        <a href="/<%= link.name %>"><%= link.name %></a> - <%= link.url %> (<%= link.hits %> hits)
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div style="margin-top:2em;">
+  <h2>Recently Added</h2>
+  <ul>
+    <% @recent_links.each do |link| %>
+      <li>
+        <a href="/<%= link.name %>"><%= link.name %></a> - <%= link.url %> (added <%= link.created_at.strftime('%Y-%m-%d') if link.created_at %>)
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div style="margin-top:2em;">
+  <h2>Audit Log (last 20 actions)</h2>
+  <table style="width:100%;border-collapse:collapse;font-size:0.98em;">
+    <thead>
+      <tr style="background:#f5f5f5;">
+        <th style="text-align:left;padding:4px 8px;">Time</th>
+        <th style="text-align:left;padding:4px 8px;">User</th>
+        <th style="text-align:left;padding:4px 8px;">Action</th>
+        <th style="text-align:left;padding:4px 8px;">Entity</th>
+        <th style="text-align:left;padding:4px 8px;">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @audit_logs.each do |log| %>
+        <tr style="border-bottom:1px solid #eee;">
+          <td style="padding:4px 8px;"><%= log.created_at.strftime('%Y-%m-%d %H:%M') if log.created_at %></td>
+          <td style="padding:4px 8px;"><%= log.user_id ? (User[log.user_id]&.username || 'User#'+log.user_id.to_s) : 'System' %></td>
+          <td style="padding:4px 8px;"><%= log.action %></td>
+          <td style="padding:4px 8px;"><%= log.entity_type %> #<%= log.entity_id %></td>
+          <td style="padding:4px 8px;"><%= log.details %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

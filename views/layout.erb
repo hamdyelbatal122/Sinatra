@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go - URL Shortener</title>
+    <link rel="search" title="Go" href="/links/opensearch.xml" type="application/opensearchdescription+xml"/>
+    <style>
+      :root {
+        --primary: #007bff;
+        --primary-dark: #0056b3;
+        --danger: #c00;
+        --bg: #f8f9fa;
+        --card: #fff;
+        --border: #e0e0e0;
+        --radius: 10px;
+      }
+      html { box-sizing: border-box; }
+      *, *:before, *:after { box-sizing: inherit; }
+      body {
+        font: 16px 'Inter', 'Helvetica Neue', Helvetica, Arial, Geneva, sans-serif;
+        background: var(--bg);
+        color: #222;
+        margin: 0;
+        min-height: 100vh;
+      }
+      .container {
+        max-width: 700px;
+        margin: 40px auto;
+        background: var(--card);
+        border-radius: var(--radius);
+        box-shadow: 0 2px 16px #e0e0e0;
+        padding: 36px 28px 28px 28px;
+      }
+      h1, h2 { font-weight: 700; margin-bottom: 0.5em; }
+      a {
+        color: var(--primary);
+        text-decoration: none;
+        border-bottom: 1px solid #cce;
+        transition: color 0.2s;
+      }
+      a:hover { text-decoration: underline; color: var(--primary-dark); }
+      .actions { float: right; }
+      .hits { color: #888; font-size: 0.95em; }
+      .remove { color: var(--danger); margin-left: 8px; }
+      form { margin-bottom: 1.5em; }
+      input[type="text"], input[type="url"], input[type="password"] {
+        width: 40%;
+        padding: 8px;
+        margin-right: 8px;
+        border: 1px solid #bbb;
+        border-radius: 4px;
+        font-size: 1em;
+        background: #fafbfc;
+        transition: border 0.2s;
+      }
+      input:focus { border: 1.5px solid var(--primary); outline: none; }
+      button {
+        padding: 8px 20px;
+        border: none;
+        background: var(--primary);
+        color: #fff;
+        border-radius: 4px;
+        font-size: 1em;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      button:hover { background: var(--primary-dark); }
+      ul { list-style: none; padding: 0; }
+      li {
+        padding: 10px 0;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        gap: 1em;
+      }
+      .name { width: 120px; font-weight: bold; }
+      .url { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .admin-bar {
+        margin-bottom: 1em;
+        text-align: right;
+        font-size: 1em;
+      }
+      @media (max-width: 600px) {
+        .container { padding: 12px 2vw; }
+        .name { width: 80px; }
+        input[type="text"], input[type="url"], input[type="password"] { width: 90%; margin-bottom: 8px; }
+        li { flex-direction: column; align-items: flex-start; gap: 0.2em; }
+      }
+      .qr svg { height: 32px; width: 32px; margin-left: 8px; vertical-align: middle; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="admin-bar">
+        <% if logged_in? %>
+          Logged in as <%= current_user.username %> |
+          <a href="/dashboard">Dashboard</a> |
+          <a href="/logout">Logout</a>
+        <% else %>
+          <a href="/login">Login</a>
+        <% end %>
+      </div>
+      <%= yield %>
+    </div>
+  </body>
+</html>

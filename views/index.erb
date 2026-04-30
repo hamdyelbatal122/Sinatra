@@ -1,8 +1,15 @@
 <h1>Go URL Shortener</h1>
 
-<% if logged_in? %>
+<% if can_manage_links? %>
   <%= erb :'partials/_link_form' %>
 <% end %>
+
+<form method="get" action="/links/search" style="margin-top:12px;">
+  <input type="text" name="q" placeholder="Search name or URL">
+  <input type="text" name="category" placeholder="Filter category">
+  <input type="text" name="tag" placeholder="Filter tag">
+  <button type="submit">Search</button>
+</form>
 
 <ul>
   <% @links.each do |link| %>

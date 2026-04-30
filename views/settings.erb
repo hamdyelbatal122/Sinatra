@@ -1,0 +1,16 @@
+<h1>Account Settings</h1>
+
+<% if @error %>
+  <p style="color:#b42318;font-weight:600;"><%= @error %></p>
+<% end %>
+<% if @success %>
+  <p style="color:#027a48;font-weight:600;"><%= @success %></p>
+<% end %>
+
+<h2>Change Password</h2>
+<form method="post" action="/settings/password">
+  <input type="password" name="current_password" placeholder="Current password" required>
+  <input type="password" name="new_password" placeholder="New password (min 8 chars)" required>
+  <input type="password" name="confirm_password" placeholder="Confirm new password" required>
+  <button type="submit">Update Password</button>
+</form>

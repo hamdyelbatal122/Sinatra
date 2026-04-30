@@ -4,3 +4,9 @@ gem 'puma'
 gem 'sequel', '~> 5.0'
 gem 'sinatra-sequel'
 gem 'sqlite3'
+gem 'bcrypt'
+
+group :test do
+  gem 'rspec'
+  gem 'rack-test'
+end

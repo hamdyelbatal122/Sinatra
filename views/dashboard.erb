@@ -10,6 +10,8 @@
     <h2>Search & Filter</h2>
     <form method="get" action="/dashboard">
       <input type="text" name="q" value="<%= @search_query %>" placeholder="Search by name or URL" style="width:60%">
+      <input type="text" name="category" value="<%= @category_query %>" placeholder="Category">
+      <input type="text" name="tag" value="<%= @tag_query %>" placeholder="Tag">
       <button>Search</button>
     </form>
     <% if @filtered_links && !@filtered_links.empty? %>

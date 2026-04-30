@@ -12,11 +12,19 @@ migration 'create users' do
 end
 
 class User < Sequel::Model
+  ROLES = %w[admin editor reader].freeze
+
   def password=(password)
     self.password_hash = BCrypt::Password.create(password)
   end
 
   def authenticate(password)
     BCrypt::Password.new(self.password_hash) == password
+  end
+
+  def validate
+    super
+    errors.add(:username, 'cannot be empty') if username.to_s.strip.empty?
+    errors.add(:role, "must be one of: #{ROLES.join(', ')}") unless ROLES.include?(role)
   end
 end

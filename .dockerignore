@@ -1,0 +1,7 @@
+.git
+.gitignore
+tmp
+log
+db/test.sqlite3
+spec
+.rspec_status

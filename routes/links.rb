@@ -15,6 +15,7 @@ end
 
 post '/links' do
   authenticate!
+  halt 403 unless can_manage_links?
   begin
     link = Link.create(
       name: params[:name],
@@ -39,12 +40,32 @@ get '/links/suggest' do
 end
 
 get '/links/search' do
-  query = params[:q]
+  query = params[:q].to_s.strip
+  category = params[:category].to_s.strip
+  tag = params[:tag].to_s.strip
+
   link  = Link[name: query]
   if link
     redirect "/#{link.name}"
   else
-    @links = Link.where(Sequel.like(:name, "#{Sequel.escape_like(query.to_s)}%"))
+    dataset = Link.dataset
+
+    unless query.empty?
+      escaped_query = Sequel.escape_like(query)
+      dataset = dataset.where(Sequel.like(:name, "%#{escaped_query}%")).or(Sequel.like(:url, "%#{escaped_query}%"))
+    end
+
+    unless category.empty?
+      escaped_category = Sequel.escape_like(category)
+      dataset = dataset.where(Sequel.like(:category, "%#{escaped_category}%"))
+    end
+
+    unless tag.empty?
+      escaped_tag = Sequel.escape_like(tag)
+      dataset = dataset.where(Sequel.like(:tags, "%#{escaped_tag}%"))
+    end
+
+    @links = dataset.order(Sequel.desc(:hits)).all
     erb :index
   end
 end
